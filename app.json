@@ -1,0 +1,12 @@
+{
+  "name": "MovieFinder",
+  "displayName": "MovieFinder",
+  "expo": {
+    "name": "MovieFinder",
+    "slug": "MovieFinder",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
