@@ -18,7 +18,6 @@ export const Routes: React.FC = () => {
 
     const toggle = () => {
         dispatch(toggleTheme());
-        console.log(theme)
     };
 
     return (
