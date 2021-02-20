@@ -9,10 +9,12 @@ import { RootState, useAppDispatch } from '../../../redux';
 import { getMovieId } from '../../../redux/movies/actions';
 
 import { styles} from './styles';
+import { darkMode } from '../../theme';
 
 export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): JSX.Element => {
     const dispatch = useAppDispatch();
-    const { movieId } = useSelector((state: RootState) => state.movies)
+    const { movieId } = useSelector((state: RootState) => state.movies);
+    const { theme } = useSelector((state: RootState) => state.tema);
 
     React.useEffect(() => {
         dispatch(getMovieId(route.params.id))
@@ -27,21 +29,21 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
         </View>
     };
     return (
-        <ScrollView>
+        <ScrollView style={theme && darkMode.darkBg}>
             {/* container */}
             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', paddingVertical: 5}}> 
                 {/* header */}
-                <View style={styles.headerCnt}>
+                <View style={[styles.headerCnt, theme && { borderColor: 'rgba(256,256,256, 0.4)' }]}>
                     <Image 
                         source={movieId.Poster !== 'N/A' ? { uri: `${movieId.Poster}` } : require('../../../assets/img/no-image.png') }
                         style={styles.headerImg}
                     />
                     <View style={{paddingVertical: 5}}>
-                        <Text style={{textAlign: 'center', fontWeight: 'bold', fontSize: 17}}>{movieId.Title}</Text>
-                        <Text style={{opacity: 0.6}}>{movieId.Director}</Text>
+                        <Text style={[styles.title, theme && darkMode.darkTxtTitle]}>{movieId.Title}</Text>
+                        <Text style={[{opacity: 0.6, color: '#403a3a'}, theme && darkMode.darkTxt]}>{movieId.Director}</Text>
                     </View>
                     <View style={styles.plot}>
-                        <Text style={{textAlign:'center'}}>{movieId.Plot}</Text>
+                        <Text style={[{textAlign:'center', color: '#403a3a'}, theme && darkMode.darkTxt]}>{movieId.Plot}</Text>
                     </View>
                 </View>
                 {/* details */}
@@ -56,7 +58,7 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
                                 color='#6a2c70'
                             />
                         </View>
-                        <Text style={styles.detailsText}>{movieId.Released} in {movieId.Country}</Text>
+                        <Text style={[styles.detailsText, theme && darkMode.darkTxt]}>{movieId.Released} in {movieId.Country}</Text>
                     </View>
                 }
                 {
@@ -70,7 +72,7 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
                                 color='#99ddcc'
                             />
                         </View>
-                        <Text style={styles.detailsText}>{movieId.Runtime}</Text>
+                        <Text style={[styles.detailsText, theme && darkMode.darkTxt]}>{movieId.Runtime}</Text>
                     </View>
                 }
                 {
@@ -84,7 +86,7 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
                                 color='#3f72af'
                             />
                         </View>
-                        <Text style={styles.detailsText}>{movieId.Language}</Text>
+                        <Text style={[styles.detailsText, theme && darkMode.darkTxt]}>{movieId.Language}</Text>
                     </View>
                 }
                 {
@@ -99,7 +101,7 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
                                 color='#fce38a'
                             />
                         </View>
-                        <Text style={styles.detailsText}>{movieId.imdbRating}</Text>
+                        <Text style={[styles.detailsText, theme && darkMode.darkTxt]}>{movieId.imdbRating}</Text>
                     </View>
                 }
                 {
@@ -113,7 +115,7 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
                                 color='#444f5a'
                             />
                         </View>
-                        <Text style={styles.detailsText}>{movieId.Genre}</Text>
+                        <Text style={[styles.detailsText, theme && darkMode.darkTxt]}>{movieId.Genre}</Text>
                     </View>
                 }
                 {
@@ -127,7 +129,7 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
                                     color='#ff9a00'
                                 />
                             </View>
-                            <Text style={styles.detailsText}>{movieId.Awards}</Text>
+                            <Text style={[styles.detailsText, theme && darkMode.darkTxt]}>{movieId.Awards}</Text>
                         </View>
                     )
                 }
@@ -142,7 +144,7 @@ export const MovieId = ({ navigation, route }: RouteStackParamList<'MovieId'>): 
                                     color='#6639a6'
                                 />
                             </View>
-                            <Text style={styles.detailsText}>{movieId.Actors}</Text>
+                            <Text style={[styles.detailsText, theme && darkMode.darkTxt]}>{movieId.Actors}</Text>
                         </View>
                     )
                 }
