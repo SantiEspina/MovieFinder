@@ -41,10 +41,12 @@ export const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginVertical: 3
+        marginVertical: 3,
+        color: '#0b0a0a'
     },
     year: {
-        fontWeight: 'bold'
+        color: '#403a3a',
+        fontWeight: 'bold',
     },
     look: {
         position: 'absolute',

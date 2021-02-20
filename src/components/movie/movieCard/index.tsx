@@ -9,6 +9,7 @@ import { Movie } from '../../../redux/movies/types';
 import { useAppDispatch, RootState } from '../../../redux';
 
 import { styles } from './styles';
+import { darkMode } from '../../theme';
 
 interface Props {
     movie: Movie;
@@ -17,9 +18,10 @@ interface Props {
 export const MovieCard: React.FC<Props> = ({ movie }): JSX.Element => {
     const dispatch = useAppDispatch();
     const navigation = useNavigation();
+    const { theme } = useSelector((state: RootState) => state.tema); 
 
     return (
-        <Card containerStyle={styles.container}>
+        <Card containerStyle={[styles.container, theme && darkMode.darkBgAlt, theme && { borderColor: 'rgba(256,256,256,0.4)', borderWidth: 1 }]}>
             <TouchableOpacity
                 style={{ width: '100%', flexDirection: 'row' }}
                 onPress={() => navigation.navigate('MovieId', { id: movie.imdbID })}
@@ -30,19 +32,20 @@ export const MovieCard: React.FC<Props> = ({ movie }): JSX.Element => {
                 />
                 <View style={styles.headerCnt}>
                     <View style={styles.titleCnt}>
-                        <Text style={styles.title}>{movie.Title}</Text>
-                        <Text>({movie.Type})</Text>
+                        <Text style={[styles.title, theme && darkMode.darkTxtTitle]}>{movie.Title}</Text>
+                        <Text style={[{color: '#403a3a'}, theme && darkMode.darkTxt]}>({movie.Type})</Text>
                     </View>
                     <Card.Divider />   
                     <View>
-                        <Text style={styles.year}>{movie.Year}</Text>
+                        <Text style={[styles.year, theme && darkMode.darkTxt]}>{movie.Year}</Text>
                     </View>
                 </View>
                 <View style={styles.look}>
                     <Icon 
-                        name='arrow-right'
+                        name='chevron-right'
                         type='font-awesome-5'
                         size={12}
+                        color='#ccc'
                     />
                 </View>
             </TouchableOpacity>

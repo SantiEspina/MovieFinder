@@ -20,6 +20,12 @@ export const styles = StyleSheet.create({
         marginVertical: 10,
         resizeMode: 'contain'
     },
+    title: {
+        textAlign: 'center', 
+        fontWeight: 'bold', 
+        fontSize: 17, 
+        color: '#0b0a0a'
+    },
     plot: {
         backgroundColor: 'rgba(256,256,256,0.2)',
         justifyContent: 'center',
@@ -44,6 +50,7 @@ export const styles = StyleSheet.create({
     detailsText: {
         fontSize: 15,
         marginLeft: 25,
-        width: '80%'
+        width: '80%',
+        color: '#403a3a'
     }
 });

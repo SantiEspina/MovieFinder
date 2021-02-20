@@ -9,13 +9,14 @@ import { getMovies } from '../../../redux/movies/actions';
 import { Movie } from '../../../redux/movies/types';
 import { MovieCard } from '../movieCard';
 
-import './styles';
 import { styles } from './styles';
+import { darkMode } from '../../theme';
 
 export const MovieScreen: React.FC = (): JSX.Element => {
     const [ title, setTitle ] = React.useState<string>('');
     const dispatch = useAppDispatch();
     const { loader, movies } = useSelector((state: RootState) => state.movies);
+    const { theme } = useSelector((state: RootState) => state.tema);
 
     const handleChange = (title: string) => {
         setTitle(title);
@@ -52,7 +53,7 @@ export const MovieScreen: React.FC = (): JSX.Element => {
     }
     
     return (
-        <View style={{flex: 1}}>
+        <View style={[{flex: 1}, theme && darkMode.darkBg]}>
             <Input 
                 value={title}
                 onChangeText={handleChange}
@@ -67,6 +68,7 @@ export const MovieScreen: React.FC = (): JSX.Element => {
                 inputContainerStyle={styles.inputContainerStyle}
                 inputStyle={styles.inputStyle}
                 containerStyle={styles.containerStyle}
+                placeholderTextColor='rgba(0,0,0,0.3)'
             />
             <Divider />
             {
