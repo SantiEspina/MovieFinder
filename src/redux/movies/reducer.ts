@@ -1,8 +1,9 @@
-import { GET_MOVIES, GET_MOVIE_ID, MovieState } from './types';
+import { GET_MOVIES, GET_MOVIE_ID, LOADER, MovieState } from './types';
 
 const initialState: MovieState = {
     movies: [],
-    movieId: [],
+    movieId: {},
+    loader: true
 };
 
 export function moviesReducer(state = initialState, action: any): MovieState {
@@ -10,12 +11,19 @@ export function moviesReducer(state = initialState, action: any): MovieState {
         case GET_MOVIES:
             return {
                 ...state,
-                movies: action.payload
+                movies: action.payload,
+                loader: false
             }
         case GET_MOVIE_ID:
             return {
                 ...state,
                 movieId: action.payload
+            }
+        case LOADER:
+            return {
+                ...state,
+                loader: true,
+                movies: []
             }
         default: return state;
     };

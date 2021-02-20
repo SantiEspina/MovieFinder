@@ -2,7 +2,7 @@ import { registerRootComponent } from 'expo';
 import { API_KEY } from '@env';
 import axios from 'axios';
 
-axios.defaults.baseURL = `http://www.omdbapi.com/?apikey=${API_KEY}&`;
+// axios.defaults.baseURL = `http://www.omdbapi.com/?apikey=${API_KEY}&`;
 
 import App from './App';
 
